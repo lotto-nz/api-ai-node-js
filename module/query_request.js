@@ -54,6 +54,10 @@ function QueryRequest (application, options) {
         self.requestSource = application.requestSource;
     }
 
+    if ('originalRequest' in options) {
+        self.originalRequest = options.originalRequest;
+    }    
+
     QueryRequest.super_.apply(this, arguments);
 }
 
@@ -97,6 +101,10 @@ QueryRequest.prototype._jsonRequestParameters = function() {
     if ('sessionId' in self) {
         json['sessionId'] = self.sessionId;
     }
+
+    if ('originalRequest' in self) {
+        json.originalRequest = self.originalRequest;
+    }    
 
     return json;
 };
